@@ -1,3 +1,5 @@
+require("scroll.lua")
+
 function love.load()
   love.window.setMode(800, 600)
   w = love.graphics.getWidth()
