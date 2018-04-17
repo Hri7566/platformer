@@ -14,9 +14,19 @@ function love.load()
   player.jumpheight = -300
   player.gravity = -500
   player.x = 50
-  player.y = ground.y - player.height
-  player.yvelocity = player.jumpheight
+  player.y = h - 50 - player.height - 1
+  player.yvel = player.jumpheight
   player.ground = player.y
+
+  function drawGround()
+    love.graphics.setColor(175, 50, 0)
+    love.graphics.rectangle("fill", ground.x, ground.y, ground.width, ground.height)
+  end
+
+  function drawPlayer()
+    love.graphics.setColor(0, 235, 20)
+    love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
+  end
 end
 
 function love.update(dt)
@@ -35,25 +45,23 @@ function love.update(dt)
   end
 
   if love.keyboard.isDown("w", "space") then
-    if player.yvelocity == 0 then
-      player.yvelocity = player.jumpheight
+    if player.yvel == 0 then
+      player.yvel = player.jumpheight
     end
   end
 
-  if player.yvelocity ~= 0 then
-    player.y = player.y + player.yvelocity * dt
-    player.yvelocity = player.yvelocity - player.gravity * dt
+  if player.yvel ~= 0 then
+    player.y = player.y + player.yvel * dt
+    player.yvel = player.yvel - player.gravity * dt
   end
 
   if player.y > player.ground then
-    player.yvelocity = 0
+    player.yvel = 0
     player.y = player.ground
   end
 end
 
 function love.draw()
-  love.graphics.setColor(0, 235, 20)
-  love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
-  love.graphics.setColor(175, 50, 0)
-  love.graphics.rectangle("fill", ground.x, ground.y, ground.width, ground.height)
+  drawGround()
+  drawPlayer()
 end
