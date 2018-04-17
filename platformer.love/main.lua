@@ -1,5 +1,3 @@
-require("scroll.lua")
-
 function love.load()
   love.window.setMode(800, 600)
   w = love.graphics.getWidth()
@@ -67,4 +65,5 @@ function love.draw()
   love.graphics.setBackgroundColor(255, 255, 255)
   drawGround()
   drawPlayer()
+  print(text)
 end
