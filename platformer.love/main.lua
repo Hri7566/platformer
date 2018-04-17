@@ -8,6 +8,7 @@ function love.load()
   ground.x = 0
   ground.y = h - 50
   player = {}
+  player.img = love.graphics.newImage("graphics/player.png")
   player.width = 37.5
   player.height = 37.5
   player.speed = 7
@@ -24,8 +25,7 @@ function love.load()
   end
 
   function drawPlayer()
-    love.graphics.setColor(0, 235, 20)
-    love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
+    love.graphics.draw(player.img, player.x, player.y, 0, 2.25, 2.25, 0, 0, 0, 0)
   end
 end
 
@@ -62,6 +62,7 @@ function love.update(dt)
 end
 
 function love.draw()
+  love.graphics.setBackgroundColor(255, 255, 255)
   drawGround()
   drawPlayer()
 end
