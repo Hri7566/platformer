@@ -44,7 +44,7 @@ function love.update(dt)
     end
   end
 
-  if love.keyboard.isDown("w", "space") then
+  if love.keyboard.isDown("w", "space", "up") then
     if player.yvel == 0 then
       player.yvel = player.jumpheight
     end
